@@ -1,4 +1,6 @@
-import ILcallTax from './callTax.svg';
+import ILCallTax from './callTax.svg';
 import ILBg from './bg.png';
+import ILUserPhotoNull from './userPhotoNull.png';
+import ILCircleFrame from './circleFrame.png';
 
-export {ILcallTax, ILBg};
+export {ILCallTax, ILBg, ILUserPhotoNull, ILCircleFrame};

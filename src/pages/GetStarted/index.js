@@ -1,15 +1,16 @@
 import React from 'react';
 import {ImageBackground, StyleSheet, Text, View} from 'react-native';
-import {ILcallTax} from '../../assets';
+import {ILCallTax} from '../../assets';
 import {ILBg} from '../../assets';
 import {Button, Gap} from '../../components';
+import {colors, fonts} from '../../utils';
 
 const GetStarted = ({navigation}) => {
   return (
     <ImageBackground source={ILBg} style={styles.bg}>
       <View style={styles.pages}>
         <View>
-          <ILcallTax />
+          <ILCallTax />
           <Text style={styles.text}>
             Maintain Your Business's Profitability With Us
           </Text>
@@ -42,8 +43,8 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 28,
     marginTop: 54,
-    fontFamily: 'Nunito-SemiBold',
-    color: 'white',
+    fontFamily: fonts.primary[600],
+    color: colors.text.white,
   },
   spacing: {
     height: 16,

@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {ILcallTax} from '../../assets';
+import {ILCallTax} from '../../assets';
+import {colors, fonts} from '../../utils';
 
 export default function Splash({navigation}) {
   useEffect(() => {
@@ -11,7 +12,7 @@ export default function Splash({navigation}) {
 
   return (
     <View style={styles.pages}>
-      <ILcallTax />
+      <ILCallTax />
       <Text style={styles.text}>Call Tax</Text>
     </View>
   );
@@ -19,15 +20,14 @@ export default function Splash({navigation}) {
 
 const styles = StyleSheet.create({
   pages: {
-    backgroundColor: 'white',
+    backgroundColor: colors.white,
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
   },
   text: {
-    fontFamily: 'Nunito-SemiBold',
     fontSize: 20,
-    color: '#112340',
+    fontFamily: fonts.primary[600],
     marginTop: 20,
   },
 });
