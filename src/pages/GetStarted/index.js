@@ -1,6 +1,6 @@
 import React from 'react';
 import {ImageBackground, StyleSheet, Text, View} from 'react-native';
-import {ILCallTax} from '../../assets';
+import {ILMyDoctor} from '../../assets';
 import {ILBg} from '../../assets';
 import {Button, Gap} from '../../components';
 import {colors, fonts} from '../../utils';
@@ -10,9 +10,9 @@ const GetStarted = ({navigation}) => {
     <ImageBackground source={ILBg} style={styles.bg}>
       <View style={styles.pages}>
         <View>
-          <ILCallTax />
+          <ILMyDoctor />
           <Text style={styles.text}>
-            Maintain Your Business's Profitability With Us
+            Konsultasi dengan dokter jadi lebih mudah & fleksibel
           </Text>
         </View>
         <View style={styles.buttons}>

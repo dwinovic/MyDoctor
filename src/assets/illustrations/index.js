@@ -1,6 +1,6 @@
-import ILCallTax from './callTax.svg';
-import ILBg from './bg.png';
+import ILMyDoctor from './myDoctorLogo.svg';
+import ILBg from './bg.jpg';
 import ILUserPhotoNull from './userPhotoNull.png';
 import ILCircleFrame from './circleFrame.png';
 
-export {ILCallTax, ILBg, ILUserPhotoNull, ILCircleFrame};
+export {ILMyDoctor, ILBg, ILUserPhotoNull, ILCircleFrame};

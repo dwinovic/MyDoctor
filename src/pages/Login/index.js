@@ -4,7 +4,7 @@ import {ILCallTax} from '../../assets';
 import {Button, Gap, Input, Link} from '../../components';
 import {colors, fonts} from '../../utils';
 
-const SignIn = () => {
+const SignIn = ({navigation}) => {
   return (
     <View style={styles.page}>
       <View>
@@ -17,7 +17,11 @@ const SignIn = () => {
         <Link size={12} title="Forgot My Password" />
       </View>
       <View>
-        <Button style={styles.button} title="Sign In" />
+        <Button
+          style={styles.button}
+          title="Sign In"
+          onPress={() => navigation.navigate('MainApp')}
+        />
         <Gap height={30} />
         <Link size={16} title="Create New Account" align="center" />
       </View>

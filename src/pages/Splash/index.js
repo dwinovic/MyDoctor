@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {ILCallTax} from '../../assets';
+import {ILMyDoctor} from '../../assets';
 import {colors, fonts} from '../../utils';
 
 export default function Splash({navigation}) {
@@ -12,8 +12,8 @@ export default function Splash({navigation}) {
 
   return (
     <View style={styles.pages}>
-      <ILCallTax />
-      <Text style={styles.text}>Call Tax</Text>
+      <ILMyDoctor />
+      <Text style={styles.text}>My Doctor</Text>
     </View>
   );
 }
