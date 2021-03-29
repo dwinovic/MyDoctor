@@ -1,4 +1,17 @@
 import Header from './Header';
 import BottomNavigator from './BottomNavigator';
+import HomeProfile from './HomeProfile';
+import DoctorCategory from './DoctorCategory';
+import NewsItem from './NewsItem';
+import ListDoctor from './ListDoctor';
+import ListHospitals from './ListHospitals';
 
-export {Header, BottomNavigator};
+export {
+  Header,
+  BottomNavigator,
+  HomeProfile,
+  DoctorCategory,
+  NewsItem,
+  ListDoctor,
+  ListHospitals,
+};

@@ -38,6 +38,7 @@ const BottomNavigator = ({state, descriptors, navigation}) => {
 
         return (
           <TabIcon
+            key={route.key}
             label={label}
             active={isFocused}
             onPress={onPress}
