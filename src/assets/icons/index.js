@@ -13,6 +13,8 @@ import ICDoctorCategoryUmum from './dummyDoctorCategory-Umum.svg';
 import ICDoctorCategoryPsikiater from './dummyDoctorCategory-Psikiater.svg';
 import ICrateStarFilled from './iconRateStarFilled.svg';
 import ICrateStartUnfilled from './iconRateStarUnFilled.svg';
+import ICBackLight from './iconBack-light.svg';
+import ICNext from './iconNext.svg';
 
 export {
   ICBackDark,
@@ -30,4 +32,6 @@ export {
   ICDoctorCategoryPsikiater,
   ICrateStarFilled,
   ICrateStartUnfilled,
+  ICBackLight,
+  ICNext,
 };

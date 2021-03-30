@@ -1,15 +1,37 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import {ICDoctorCategoryUmum} from '../../../assets';
+import {StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {
+  ICDoctorCategoryAnak,
+  ICDoctorCategoryObat,
+  ICDoctorCategoryPsikiater,
+  ICDoctorCategoryUmum,
+} from '../../../assets';
 import {colors, fonts} from '../../../utils';
 
-export default function DoctorCategory() {
+export default function DoctorCategory({category, onPress}) {
+  const ILCategory = () => {
+    if (category === 'dokter umum') {
+      return <ICDoctorCategoryUmum style={styles.icon} />;
+    }
+    if (category === 'psikiater') {
+      return <ICDoctorCategoryPsikiater style={styles.icon} />;
+    }
+    if (category === 'dokter anak') {
+      return <ICDoctorCategoryAnak style={styles.icon} />;
+    }
+    if (category === 'dokter obat') {
+      return <ICDoctorCategoryObat style={styles.icon} />;
+    }
+
+    return <ICDoctorCategoryUmum style={styles.icon} />;
+  };
+
   return (
-    <View style={styles.card}>
-      <ICDoctorCategoryUmum style={styles.icon} />
+    <TouchableOpacity style={styles.card} onPress={onPress}>
+      <ILCategory />
       <Text style={styles.cardText}>Saya butuh</Text>
-      <Text style={styles.category}>dokter Umum</Text>
-    </View>
+      <Text style={styles.category}>{category}</Text>
+    </TouchableOpacity>
   );
 }
 

@@ -1,7 +1,13 @@
 import React from 'react';
 import {ImageBackground, StyleSheet, Text, View} from 'react-native';
-import {DMBGHospitals} from '../../assets/dummy';
-import {ListHospitals} from '../../components';
+import {ScrollView} from 'react-native-gesture-handler';
+import {
+  DMBGHospitals,
+  DMHospital1,
+  DMHospital2,
+  DMHospital3,
+} from '../../assets/dummy';
+import {Gap, ListHospitals} from '../../components';
 import {colors, fonts} from '../../utils';
 
 export default function Hospitals() {
@@ -12,9 +18,27 @@ export default function Hospitals() {
         <Text style={styles.desc}>3 tersedia</Text>
       </ImageBackground>
       <View style={styles.content}>
-        <ListHospitals />
-        <ListHospitals />
-        <ListHospitals />
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <Gap height={30} />
+          <ListHospitals
+            type="Rumah Sakit"
+            name="Dr. Soedono"
+            pic={DMHospital1}
+            addr="Jl. Dr. Sutomo No. 59"
+          />
+          <ListHospitals
+            type="Rumah Sakit"
+            name="Islam Siti Aisyah Madiun"
+            pic={DMHospital2}
+            addr="Jl. Dr. Sutomo No. 59"
+          />
+          <ListHospitals
+            type="Rumah Sakit"
+            name=" Tingkatan Paling Atas"
+            pic={DMHospital3}
+            addr="Jl. Dr. Sutomo No. 59"
+          />
+        </ScrollView>
       </View>
     </View>
   );
@@ -48,7 +72,6 @@ const styles = StyleSheet.create({
     flex: 1,
     borderRadius: 20,
     marginTop: -30,
-    paddingHorizontal: 16,
-    paddingVertical: 30,
+    paddingHorizontal: -16,
   },
 });

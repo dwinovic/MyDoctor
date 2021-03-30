@@ -1,19 +1,18 @@
 import React from 'react';
-import {StyleSheet, Text, View, Image} from 'react-native';
-import {DMDoctor1} from '../../../assets/dummy';
-import {colors} from '../../../utils';
+import {Image, StyleSheet, Text, View} from 'react-native';
+import {ICNext} from '../../../assets';
+import {colors, fonts} from '../../../utils';
 
-export default function ListDoctor() {
+export default function ListDoctor({profile, name, desc, type}) {
   return (
     <View style={styles.MainWrapper}>
       <View style={styles.container}>
-        <Image source={DMDoctor1} style={styles.avatar} />
+        <Image source={profile} style={styles.avatar} />
         <View style={styles.wrappMessage}>
-          <Text style={styles.doctorName}>dr. Dwinovic </Text>
-          <Text style={styles.desc}>
-            Baik ibu, terima kasih atas informasinya..
-          </Text>
+          <Text style={styles.doctorName}>{name}</Text>
+          <Text style={styles.desc}>{desc}</Text>
         </View>
+        {type === 'next' && <ICNext />}
       </View>
       <View style={styles.divider} />
     </View>
@@ -23,10 +22,13 @@ export default function ListDoctor() {
 const styles = StyleSheet.create({
   MainWrapper: {
     marginBottom: 16,
+    // flex: 1,
   },
   container: {
     marginBottom: 16,
     flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   avatar: {
     width: 46,
@@ -38,5 +40,16 @@ const styles = StyleSheet.create({
     height: 1.5,
     backgroundColor: colors.divider,
     marginHorizontal: -16,
+  },
+  doctorName: {
+    fontFamily: fonts.primary[700],
+    fontSize: 16,
+  },
+  desc: {
+    fontFamily: fonts.primary[400],
+    fontSize: 14,
+  },
+  wrappMessage: {
+    flex: 1,
   },
 });

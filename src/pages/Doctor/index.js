@@ -3,8 +3,9 @@ import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import {DoctorCategory, Gap, HomeProfile, NewsItem} from '../../components';
 import DoctorRated from '../../components/molecules/DoctorRated';
 import {colors, fonts} from '../../utils';
+import {JSONCategoryDoctor} from '../../assets';
 
-export default function Doctor() {
+export default function Doctor({navigation}) {
   return (
     <View style={styles.page}>
       <View style={styles.content}>
@@ -17,10 +18,15 @@ export default function Doctor() {
           <View style={styles.categories}>
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
               <Gap width={16} />
-              <DoctorCategory />
-              <DoctorCategory />
-              <DoctorCategory />
-              <DoctorCategory />
+              {JSONCategoryDoctor.data.map(item => {
+                return (
+                  <DoctorCategory
+                    key={item.id}
+                    category={item.category}
+                    onPress={() => navigation.navigate('ChooseDoctor')}
+                  />
+                );
+              })}
               <Gap width={6} />
             </ScrollView>
           </View>
