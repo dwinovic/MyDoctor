@@ -15,6 +15,12 @@ import ICrateStarFilled from './iconRateStarFilled.svg';
 import ICrateStartUnfilled from './iconRateStarUnFilled.svg';
 import ICBackLight from './iconBack-light.svg';
 import ICNext from './iconNext.svg';
+import ICEditProfile from './icon-editProfile.svg';
+import ICLanguage from './icon-Language.svg';
+import ICHelpCenter from './icon-HelpCenter.svg';
+import ICStar from './icon-Star.svg';
+import ICSend from './icon-sendFilled.svg';
+import ICSendDisable from './icon-sendUnFilled.svg';
 
 export {
   ICBackDark,
@@ -34,4 +40,10 @@ export {
   ICrateStartUnfilled,
   ICBackLight,
   ICNext,
+  ICEditProfile,
+  ICLanguage,
+  ICHelpCenter,
+  ICStar,
+  ICSend,
+  ICSendDisable,
 };

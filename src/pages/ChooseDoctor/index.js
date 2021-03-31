@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {DMDoctor6} from '../../assets';
-import {Header, ListDoctor} from '../../components';
+import {Header, List} from '../../components';
 
 export default function ChooseDoctor({navigation}) {
   return (
@@ -12,15 +12,15 @@ export default function ChooseDoctor({navigation}) {
         onPress={() => navigation.goBack()}
       />
       <View style={styles.wrapperDoctor}>
-        <ListDoctor
+        <List
           name="Siti"
           profile={DMDoctor6}
           desc="Wanita"
           type="next"
           onPress={() => navigation.navigate('Chatting')}
         />
-        <ListDoctor name="Siti" profile={DMDoctor6} desc="Wanita" type="next" />
-        <ListDoctor name="Siti" profile={DMDoctor6} desc="Wanita" type="next" />
+        <List name="Siti" profile={DMDoctor6} desc="Wanita" type="next" />
+        <List name="Siti" profile={DMDoctor6} desc="Wanita" type="next" />
       </View>
     </View>
   );

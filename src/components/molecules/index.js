@@ -3,9 +3,10 @@ import BottomNavigator from './BottomNavigator';
 import HomeProfile from './HomeProfile';
 import DoctorCategory from './DoctorCategory';
 import NewsItem from './NewsItem';
-import ListDoctor from './ListDoctor';
+import List from './List';
 import ListHospitals from './ListHospitals';
 import ChatItem from './ChatItem';
+import Profile from './Profile';
 
 export {
   Header,
@@ -13,7 +14,8 @@ export {
   HomeProfile,
   DoctorCategory,
   NewsItem,
-  ListDoctor,
+  List,
   ListHospitals,
+  Profile,
   ChatItem,
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import {TouchableOpacity} from 'react-native';
+import {StyleSheet, TouchableOpacity} from 'react-native';
 import {ICBackDark, ICBackLight} from '../../../assets';
 
 export default function IconOnly({onPress, icon}) {
@@ -10,12 +10,15 @@ export default function IconOnly({onPress, icon}) {
     if (icon === 'back-light') {
       return <ICBackLight />;
     }
+
     return <ICBackDark />;
   };
 
   return (
-    <TouchableOpacity onPress={onPress}>
+    <TouchableOpacity onPress={onPress} style={styles.container}>
       <Icon />
     </TouchableOpacity>
   );
 }
+
+const styles = StyleSheet.create({});

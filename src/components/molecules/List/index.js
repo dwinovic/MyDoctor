@@ -1,13 +1,39 @@
 import React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {ICNext} from '../../../assets';
+import {
+  ICEditProfile,
+  ICHelpCenter,
+  ICLanguage,
+  ICNext,
+  ICStar,
+} from '../../../assets';
 import {colors, fonts} from '../../../utils';
 
-export default function ListDoctor({profile, name, desc, type, onPress}) {
+export default function List({profile, name, desc, type, onPress, icon}) {
+  const Icon = () => {
+    if (icon === 'edit-profile') {
+      return <ICEditProfile />;
+    }
+    if (icon === 'language') {
+      return <ICLanguage />;
+    }
+    if (icon === 'rated') {
+      return <ICStar />;
+    }
+    if (icon === 'help-center') {
+      return <ICHelpCenter />;
+    }
+    return <ICEditProfile />;
+  };
+
   return (
     <View style={styles.MainWrapper}>
       <TouchableOpacity style={styles.container} onPress={onPress}>
-        <Image source={profile} style={styles.avatar} />
+        {icon ? (
+          <Icon style={styles.icon} />
+        ) : (
+          <Image source={profile} style={styles.avatar} />
+        )}
         <View style={styles.wrappMessage}>
           <Text style={styles.doctorName}>{name}</Text>
           <Text style={styles.desc}>{desc}</Text>
@@ -51,5 +77,6 @@ const styles = StyleSheet.create({
   },
   wrappMessage: {
     flex: 1,
+    marginLeft: 16,
   },
 });

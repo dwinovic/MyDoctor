@@ -39,4 +39,5 @@ export const colors = {
     isMe: mainColors.green3,
     others: mainColors.green4,
   },
+  disable: mainColors.grey3,
 };

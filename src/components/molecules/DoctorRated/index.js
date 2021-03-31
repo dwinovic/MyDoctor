@@ -1,12 +1,12 @@
 import React from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {ICrateStarFilled, ICrateStartUnfilled} from '../../../assets';
 import {DMDoctor1} from '../../../assets/dummy';
 import {colors, fonts} from '../../../utils';
 
-export default function DoctorRated() {
+export default function DoctorRated({onPress}) {
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={onPress}>
       <Image source={DMDoctor1} style={styles.avatar} />
       <View style={styles.doctor}>
         <Text style={styles.doctorName}>dr. Shiva Alamsyah</Text>
@@ -19,7 +19,7 @@ export default function DoctorRated() {
         <ICrateStarFilled />
         <ICrateStartUnfilled />
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 
