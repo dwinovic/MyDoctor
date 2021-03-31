@@ -9,7 +9,7 @@ export default function ListHospital({type, name, addr, pic}) {
         <Image source={pic} style={styles.imgHotel} />
         <View style={styles.wrapperDesc}>
           <Text style={styles.HospitalName}>{type}</Text>
-          <Text style={styles}>{name}</Text>
+          <Text style={styles.name}>{name}</Text>
           <Text style={styles.addrs}>{addr}</Text>
         </View>
       </View>
@@ -19,14 +19,14 @@ export default function ListHospital({type, name, addr, pic}) {
 }
 
 const styles = StyleSheet.create({
-  wrapperHospital: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 16,
-  },
   container: {
     paddingHorizontal: 16,
     flex: 1,
+    marginBottom: 16,
+  },
+  wrapperHospital: {
+    flexDirection: 'row',
+    alignItems: 'center',
     marginBottom: 16,
   },
   imgHotel: {
@@ -40,6 +40,11 @@ const styles = StyleSheet.create({
     fontFamily: fonts.primary[500],
     color: colors.text.primary,
     maxWidth: 91,
+  },
+  name: {
+    fontSize: 16,
+    fontFamily: fonts.primary[500],
+    color: colors.text.primary,
   },
   addrs: {
     fontSize: 12,

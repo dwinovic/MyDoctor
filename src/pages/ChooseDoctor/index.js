@@ -12,7 +12,13 @@ export default function ChooseDoctor({navigation}) {
         onPress={() => navigation.goBack()}
       />
       <View style={styles.wrapperDoctor}>
-        <ListDoctor name="Siti" profile={DMDoctor6} desc="Wanita" type="next" />
+        <ListDoctor
+          name="Siti"
+          profile={DMDoctor6}
+          desc="Wanita"
+          type="next"
+          onPress={() => navigation.navigate('Chatting')}
+        />
         <ListDoctor name="Siti" profile={DMDoctor6} desc="Wanita" type="next" />
         <ListDoctor name="Siti" profile={DMDoctor6} desc="Wanita" type="next" />
       </View>

@@ -1,14 +1,14 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {ILCallTax} from '../../assets';
+import {ILMyDoctor} from '../../assets';
 import {Button, Gap, Input, Link} from '../../components';
 import {colors, fonts} from '../../utils';
 
-const SignIn = ({navigation}) => {
+export default function SignIn({navigation}) {
   return (
     <View style={styles.page}>
       <View>
-        <ILCallTax />
+        <ILMyDoctor />
         <Text style={styles.heading}>Login and Started Consultation Now</Text>
         <Input label="Email" />
         <Gap height={24} />
@@ -27,9 +27,7 @@ const SignIn = ({navigation}) => {
       </View>
     </View>
   );
-};
-
-export default SignIn;
+}
 
 const styles = StyleSheet.create({
   page: {

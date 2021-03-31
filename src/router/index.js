@@ -5,12 +5,13 @@ import {
   Splash,
   GetStarted,
   Register,
-  Login,
+  SignIn,
   UploadPhoto,
   Doctor,
   Message,
   Hospitals,
   ChooseDoctor,
+  Chatting,
 } from '../pages';
 import {BottomNavigator} from '../components';
 
@@ -29,7 +30,7 @@ const MainApp = () => {
 
 const Router = () => {
   return (
-    <Stack.Navigator initialRouteName="MainApp">
+    <Stack.Navigator initialRouteName="ChooseDoctor">
       <Stack.Screen
         name="Splash"
         component={Splash}
@@ -46,8 +47,8 @@ const Router = () => {
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name="Login"
-        component={Login}
+        name="SignIn"
+        component={SignIn}
         options={{headerShown: false}}
       />
       <Stack.Screen
@@ -63,6 +64,11 @@ const Router = () => {
       <Stack.Screen
         name="ChooseDoctor"
         component={ChooseDoctor}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Chatting"
+        component={Chatting}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

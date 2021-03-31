@@ -1,6 +1,8 @@
 const mainColors = {
   green1: '#09CE67',
   green2: '#A0FFCE',
+  green3: '#EDFCFD',
+  green4: '#0BCAD4',
   dark1: '#112340',
   dark2: '#495A75',
   grey1: '#7D8797',
@@ -14,8 +16,8 @@ export const colors = {
   white: 'white',
   black: 'black',
   text: {
-    primary: 'black',
-    secondary: 'gray',
+    primary: mainColors.dark1,
+    secondary: mainColors.grey1,
     white: 'white',
     menuInactive: mainColors.dark2,
     menuActive: mainColors.green1,
@@ -33,4 +35,8 @@ export const colors = {
   border: mainColors.grey2,
   card: mainColors.green2,
   divider: mainColors.grey2,
+  ChatItem: {
+    isMe: mainColors.green3,
+    others: mainColors.green4,
+  },
 };
