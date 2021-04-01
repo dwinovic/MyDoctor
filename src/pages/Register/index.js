@@ -1,28 +1,66 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, View} from 'react-native';
+import {ScrollView} from 'react-native-gesture-handler';
 import {Button, Gap, Header, Input} from '../../components';
-import {colors, fonts} from '../../utils';
+import {colors, fonts, useForm} from '../../utils';
 
 const Register = ({navigation}) => {
+  const [fullName, setFullName] = useState('');
+  const [profession, setProfession] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const onContinue = () => {
+    console.log(form);
+    // () => navigation.navigate('UploadPhoto')
+  };
+
+  const [form, setForm] = useForm({
+    fullName: '',
+    profession: '',
+    email: '',
+    password: '',
+  });
+
   return (
     <View style={styles.page}>
       <Header onPress={() => navigation.goBack()} title="Register Now" />
-      <View style={styles.content}>
-        <View>
-          <Input label="Full Name" placeholder="Your name" />
-          <Gap height={24} />
-          <Input label="Profession" placeholder="Your Profession" />
-          <Gap height={24} />
-          <Input label="Email Address" placeholder="youremail@gmail.com" />
-          <Gap height={24} />
-          <Input label="Password" placeholder="Your password" />
-          <Gap height={40} />
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={styles.content}>
+          <View>
+            <Input
+              label="Full Name"
+              placeholder="Your full name"
+              value={form.fullName}
+              onChangeText={value => setForm('fullName', value)}
+            />
+            <Gap height={24} />
+            <Input
+              label="Profession"
+              placeholder="Your Profession"
+              value={form.profession}
+              onChangeText={value => setForm('profession', value)}
+            />
+            <Gap height={24} />
+            <Input
+              label="Email Address"
+              placeholder="youremail@gmail.com"
+              value={form.email}
+              onChangeText={value => setForm('email', value)}
+            />
+            <Gap height={24} />
+            <Input
+              label="Password"
+              placeholder="Your password"
+              value={form.password}
+              onChangeText={value => setForm('password', value)}
+              secureTextEntry
+            />
+            <Gap height={60} />
+          </View>
+          <Button title="Contiue" onPress={onContinue} />
         </View>
-        <Button
-          title="Contiue"
-          onPress={() => navigation.navigate('UploadPhoto')}
-        />
-      </View>
+      </ScrollView>
     </View>
   );
 };
