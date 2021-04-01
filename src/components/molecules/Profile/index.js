@@ -1,9 +1,14 @@
 import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
-import {DMUser, ICBtnPhotoAdd, ICBtnPhotoRemove} from '../../../assets';
+import {
+  ICBtnPhotoAdd,
+  ICBtnPhotoRemove,
+  ICFemale,
+  ICMale,
+} from '../../../assets';
 import {colors, fonts} from '../../../utils';
 
-const Profile = ({username, desc, editIcon}) => {
+const Profile = ({username, desc, editIcon, pic}) => {
   const EditProfile = () => {
     if (editIcon === 'add') {
       return <ICBtnPhotoAdd style={styles.editIcon} />;
@@ -11,13 +16,19 @@ const Profile = ({username, desc, editIcon}) => {
     if (editIcon === 'remove') {
       return <ICBtnPhotoRemove style={styles.editIcon} />;
     }
+    if (editIcon === 'female') {
+      return <ICFemale style={styles.editIcon} />;
+    }
+    if (editIcon === 'male') {
+      return <ICMale style={styles.editIcon} />;
+    }
     return null;
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.avatarWrapper}>
-        <Image source={DMUser} style={styles.avatar} />
+        <Image source={pic} style={styles.avatar} />
         <EditProfile />
       </View>
       {username && (

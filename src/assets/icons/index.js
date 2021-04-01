@@ -21,6 +21,8 @@ import ICHelpCenter from './icon-HelpCenter.svg';
 import ICStar from './icon-Star.svg';
 import ICSend from './icon-sendFilled.svg';
 import ICSendDisable from './icon-sendUnFilled.svg';
+import ICFemale from './icon_female.svg';
+import ICMale from './icon_male.svg';
 
 export {
   ICBackDark,
@@ -46,4 +48,6 @@ export {
   ICStar,
   ICSend,
   ICSendDisable,
+  ICFemale,
+  ICMale,
 };

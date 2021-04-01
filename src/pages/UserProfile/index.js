@@ -1,5 +1,6 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
+import {DMUser} from '../../assets';
 import {Gap, Header, List, Profile} from '../../components';
 import {colors} from '../../utils';
 
@@ -10,7 +11,7 @@ const UserProfile = ({navigation}) => {
         <Header title="Profile" onPress={() => navigation.goBack()} />
       </View>
       <Gap height={10} />
-      <Profile username="Novi Dwi Cahya" desc="Product Designer" />
+      <Profile username="Novi Dwi Cahya" desc="Product Designer" pic={DMUser} />
       <Gap height={34} />
       <List
         name="Edit Profile"

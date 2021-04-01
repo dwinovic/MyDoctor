@@ -8,14 +8,16 @@ const Register = ({navigation}) => {
     <View style={styles.page}>
       <Header onPress={() => navigation.goBack()} title="Register Now" />
       <View style={styles.content}>
-        <Input label="Full Name" />
-        <Gap height={24} />
-        <Input label="Jobs" />
-        <Gap height={24} />
-        <Input label="Email Address" />
-        <Gap height={24} />
-        <Input label="Password" />
-        <Gap height={40} />
+        <View>
+          <Input label="Full Name" />
+          <Gap height={24} />
+          <Input label="Jobs" />
+          <Gap height={24} />
+          <Input label="Email Address" />
+          <Gap height={24} />
+          <Input label="Password" />
+          <Gap height={40} />
+        </View>
         <Button
           title="Contiue"
           onPress={() => navigation.navigate('UploadPhoto')}
@@ -36,7 +38,7 @@ const styles = StyleSheet.create({
     padding: 40,
     paddingTop: 0,
     flex: 1,
-    // justifyContent: 'space-between',
+    justifyContent: 'space-between',
   },
   heading: {
     fontSize: 20,
