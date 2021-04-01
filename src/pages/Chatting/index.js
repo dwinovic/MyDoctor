@@ -19,7 +19,7 @@ const Chatting = ({navigation}) => {
         <ChatItem isMe />
       </View>
       <View style={styles.inputArea}>
-        <Input disable flex={1} />
+        <Input disable flex={1} placeholder="Kirim pesan untuk dr. Nairobi" />
         <Gap width={10} />
         <Button icon="icon-sendDisable" type="icon-send" />
       </View>

@@ -9,13 +9,13 @@ const Register = ({navigation}) => {
       <Header onPress={() => navigation.goBack()} title="Register Now" />
       <View style={styles.content}>
         <View>
-          <Input label="Full Name" />
+          <Input label="Full Name" placeholder="Your name" />
           <Gap height={24} />
-          <Input label="Jobs" />
+          <Input label="Profession" placeholder="Your Profession" />
           <Gap height={24} />
-          <Input label="Email Address" />
+          <Input label="Email Address" placeholder="youremail@gmail.com" />
           <Gap height={24} />
-          <Input label="Password" />
+          <Input label="Password" placeholder="Your password" />
           <Gap height={40} />
         </View>
         <Button

@@ -4,7 +4,7 @@ import {DMDoctor1, DMDoctor2, DMDoctor3} from '../../assets/dummy';
 import {List} from '../../components';
 import {colors, fonts} from '../../utils';
 
-export default function Message() {
+export default function Message({navigation}) {
   const [doctors, setDoctors] = useState([
     {
       id: '1',
@@ -37,6 +37,7 @@ export default function Message() {
               profile={doctor.profile}
               name={doctor.name}
               desc={doctor.desc}
+              onPress={() => navigation.navigate('Chatting')}
             />
           );
         })}

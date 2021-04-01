@@ -10,9 +10,9 @@ export default function SignIn({navigation}) {
       <View>
         <ILMyDoctor />
         <Text style={styles.heading}>Login and Started Consultation Now</Text>
-        <Input label="Email" />
+        <Input label="Email" placeholder="youremail@gmail.com" />
         <Gap height={24} />
-        <Input label="Password" />
+        <Input label="Password" placeholder="your password" />
         <Gap height={10} />
         <Link size={12} title="Forgot My Password" />
       </View>
@@ -23,7 +23,12 @@ export default function SignIn({navigation}) {
           onPress={() => navigation.navigate('MainApp')}
         />
         <Gap height={30} />
-        <Link size={16} title="Create New Account" align="center" />
+        <Link
+          size={16}
+          title="Create New Account"
+          align="center"
+          onPress={() => navigation.replace('MainApp')}
+        />
       </View>
     </View>
   );

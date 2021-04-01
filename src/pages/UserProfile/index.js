@@ -31,6 +31,7 @@ export default UserProfile;
 const styles = StyleSheet.create({
   page: {
     backgroundColor: colors.white,
+    flex: 1,
     paddingHorizontal: 16,
   },
   header: {

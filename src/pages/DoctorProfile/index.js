@@ -27,7 +27,10 @@ const DoctorProfile = ({navigation}) => {
           <List onlyText name="No. STR" desc="0000116622081996" />
         </View>
         <View>
-          <Button title="Start Consultation" />
+          <Button
+            title="Start Consultation"
+            onPress={() => navigation.navigate('Chatting')}
+          />
           <Gap height={40} />
         </View>
       </View>

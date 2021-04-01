@@ -20,7 +20,11 @@ export default function UploadPhoto({navigation}) {
         <View style={styles.buttonWrapper}>
           <Button title="Upload and Continue" />
           <Gap height={30} />
-          <Link title="Skip for this" align="center" />
+          <Link
+            title="Skip for this"
+            align="center"
+            onPress={() => navigation.replace('MainApp')}
+          />
         </View>
       </View>
     </View>
