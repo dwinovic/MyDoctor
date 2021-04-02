@@ -3,17 +3,13 @@ import {StyleSheet, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import {Button, Gap, Header, Input} from '../../components';
 import {colors, fonts, useForm} from '../../utils';
+// import {Fire} from '../../config';
 
 const Register = ({navigation}) => {
-  const [fullName, setFullName] = useState('');
-  const [profession, setProfession] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const onContinue = () => {
-    console.log(form);
-    // () => navigation.navigate('UploadPhoto')
-  };
+  // const [fullName, setFullName] = useState('');
+  // const [profession, setProfession] = useState('');
+  // const [email, setEmail] = useState('');
+  // const [password, setPassword] = useState('');
 
   const [form, setForm] = useForm({
     fullName: '',
@@ -21,6 +17,27 @@ const Register = ({navigation}) => {
     email: '',
     password: '',
   });
+
+  const onContinue = () => {
+    console.log(form);
+
+    // Fire.auth()
+    //   .createUserWithEmailAndPassword(form.email, form.password)
+    //   .then(userCredential => {
+    //     // Signed in
+    //     const user = userCredential.user;
+    //     console.log('Success', user);
+    //     // ...
+    //   })
+    //   .catch(error => {
+    //     const errorCode = error.code;
+    //     const errorMessage = error.message;
+    //     console.log('error register', errorMessage);
+    //     // ..
+    //   });
+
+    // () => navigation.navigate('UploadPhoto')
+  };
 
   return (
     <View style={styles.page}>

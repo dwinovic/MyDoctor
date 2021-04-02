@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "457921009364",
+    "project_id": "mydoctor-dnv",
+    "storage_bucket": "mydoctor-dnv.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:457921009364:android:4a72884de0ea5a5ea20d41",
+        "android_client_info": {
+          "package_name": "com.dnv.mydoctor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "457921009364-ld01jak1fjvvuirjtqa56uieca7khhc3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRlNshNFpe4dw4vEFbuAxCdbS9f8T3qos"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "457921009364-ld01jak1fjvvuirjtqa56uieca7khhc3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
