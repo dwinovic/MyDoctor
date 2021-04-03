@@ -1,24 +1,45 @@
-import React from 'react';
-import {StyleSheet, Text, View, Image} from 'react-native';
-import {ICBtnPhotoAdd, ILUserPhotoNull} from '../../assets';
-import {Button, Gap, Header, Link} from '../../components';
+import React, {useState} from 'react';
+import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
+import {ICBtnPhotoAdd, ICBtnPhotoRemove, ILUserPhotoNull} from '../../assets';
+import {Button, Gap, Header, Link, Profile} from '../../components';
 import {colors, fonts} from '../../utils';
+import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 
 export default function UploadPhoto({navigation}) {
+  const [hasPhoto, setHasPhoto] = useState(false);
+  const [photo, setPhoto] = useState(ILUserPhotoNull);
+
+  const getImage = () => {
+    launchImageLibrary({}, response => {
+      if (response.didCancel || response.error) {
+        setPhoto(ILUserPhotoNull);
+        setHasPhoto(false);
+      } else {
+        const source = {uri: response.uri};
+        setPhoto(source);
+        setHasPhoto(true);
+      }
+    });
+  };
+
   return (
     <View style={styles.page}>
       <Header title="Upload Photo" onPress={() => navigation.goBack()} />
       <View style={styles.content}>
         <View style={styles.wrapper}>
           <View style={styles.avatarWrapper}>
-            <Image style={styles.avatar} source={ILUserPhotoNull} />
-            <ICBtnPhotoAdd style={styles.buttonCircle} />
+            <TouchableOpacity onPress={getImage}>
+              <Profile pic={photo} style={styles.avatar} />
+              {/* <Image style={styles.avatar} source={getImage} /> */}
+              {hasPhoto && <ICBtnPhotoRemove style={styles.buttonCircle} />}
+              {!hasPhoto && <ICBtnPhotoAdd style={styles.buttonCircle} />}
+            </TouchableOpacity>
           </View>
           <Text style={styles.nameUser}>Novi Dwi Cahya</Text>
           <Text style={styles.profession}>React Native Developer</Text>
         </View>
         <View style={styles.buttonWrapper}>
-          <Button title="Upload and Continue" />
+          <Button disable={!hasPhoto} title="Upload and Continue" />
           <Gap height={30} />
           <Link
             title="Skip for this"

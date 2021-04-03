@@ -1235,6 +1235,13 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha1-p3c2C1s5oaLlEG+OhY8v0tBgxXA=
 
+"@react-native-async-storage/async-storage@^1.15.1":
+  version "1.15.1"
+  resolved "https://registry.yarnpkg.com/@react-native-async-storage/async-storage/-/async-storage-1.15.1.tgz#9b26c32af6640d2d1f84862657825f75672bfa6b"
+  integrity sha512-rRQ3Zsz1DIzxVlRVsE4nRNLWyv4hXmt/Ecwan+ypKwp16+SUTsfdX7F/W0xu4FpUwQDFCjl7MAS9pKV2VEPwDg==
+  dependencies:
+    deep-assign "^3.0.0"
+
 "@react-native-community/cli-debugger-ui@^5.0.1-alpha.1":
   version "5.0.1-alpha.1"
   resolved "https://registry.yarnpkg.com/@react-native-community/cli-debugger-ui/-/cli-debugger-ui-5.0.1-alpha.1.tgz#09a856ccd2954cf16eea59b14dd26ae66720e4e6"
@@ -2784,6 +2791,13 @@ decode-uri-component@^0.2.0:
   resolved "https://registry.yarnpkg.com/decode-uri-component/-/decode-uri-component-0.2.0.tgz#eb3913333458775cb84cd1a1fae062106bb87545"
   integrity sha1-6zkTMzRYd1y4TNGh+uBiEGu4dUU=
 
+deep-assign@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/deep-assign/-/deep-assign-3.0.0.tgz#c8e4c4d401cba25550a2f0f486a2e75bc5f219a2"
+  integrity sha512-YX2i9XjJ7h5q/aQ/IM9PEwEnDqETAIYbggmdDB3HLTlSgo1CxPsj6pvhPG68rq6SVE0+p+6Ywsm5fTYNrYtBWw==
+  dependencies:
+    is-obj "^1.0.0"
+
 deep-is@^0.1.3, deep-is@~0.1.3:
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/deep-is/-/deep-is-0.1.3.tgz#b369d6fb5dbc13eecf524f91b070feedc357cf34"
@@ -4174,6 +4188,11 @@ is-number@^7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/is-number/-/is-number-7.0.0.tgz#7535345b896734d5f80c4d06c50955527a14f12b"
   integrity sha512-41Cifkg6e8TylSpdtTpeLVMqvSBEVzTttHvERD741+pnZ8ANv0004MRL43QKPDlK9cGvNp6NZWZUBlbGXYxxng==
+
+is-obj@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/is-obj/-/is-obj-1.0.1.tgz#3e4729ac1f5fde025cd7d83a896dab9f4f67db0f"
+  integrity sha1-PkcprB9f3gJc19g6iW2rn09n2w8=
 
 is-plain-object@^2.0.1, is-plain-object@^2.0.3, is-plain-object@^2.0.4:
   version "2.0.4"
@@ -6132,6 +6151,14 @@ react-native-codegen@^0.0.6:
     jscodeshift "^0.11.0"
     nullthrows "^1.1.1"
 
+react-native-flash-message@^0.1.23:
+  version "0.1.23"
+  resolved "https://registry.yarnpkg.com/react-native-flash-message/-/react-native-flash-message-0.1.23.tgz#50a17201a2d9d6b22a2f174a97b22c30bff15638"
+  integrity sha512-T++KNGpIofXRqj3fT+/zJH/su1VgIjGcwiJerSvRsvEXwai1LdUl+O0tX7dz+Lgxi7yzswXKWcUQmY0dZrbG3g==
+  dependencies:
+    prop-types "^15.7.2"
+    react-native-iphone-x-helper "^1.3.0"
+
 react-native-gesture-handler@^1.10.3:
   version "1.10.3"
   resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.10.3.tgz#942bbf2963bbf49fa79593600ee9d7b5dab3cfc0"
@@ -6142,6 +6169,11 @@ react-native-gesture-handler@^1.10.3:
     hoist-non-react-statics "^3.3.0"
     invariant "^2.2.4"
     prop-types "^15.7.2"
+
+react-native-image-picker@^3.3.2:
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/react-native-image-picker/-/react-native-image-picker-3.3.2.tgz#dde494ce4fbb5c36a4ea56346b751b85223d6b25"
+  integrity sha512-7z902J7a7j2rUM6zzyLSGpBSDfXy/V9ssSDKV0QyoQpr7COZs3zsJye2PU1Z4TRqmuNtREIeG5m1NdwtpcXBkg==
 
 react-native-iphone-x-helper@^1.3.0:
   version "1.3.1"
