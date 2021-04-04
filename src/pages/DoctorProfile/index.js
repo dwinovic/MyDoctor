@@ -2,6 +2,7 @@ import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {DMDoctor2} from '../../assets';
 import {Button, Gap, Header, List, Profile} from '../../components';
+import {colors} from '../../utils';
 
 const DoctorProfile = ({navigation}) => {
   return (
@@ -43,6 +44,7 @@ export default DoctorProfile;
 const styles = StyleSheet.create({
   page: {
     flex: 1,
+    backgroundColor: colors.white,
   },
   content: {
     paddingHorizontal: 16,

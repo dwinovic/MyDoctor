@@ -27,10 +27,11 @@ const Register = ({navigation}) => {
     console.log('sedang mengirim', form);
     // console.log(data);
 
-    //Get data from local storage
+    // Get data from local storage
     // getData('user').then(res => {
     //   console.log('respon: ', res);
     // });
+
     setLoading(true);
     Firebase.auth()
       .createUserWithEmailAndPassword(form.email, form.password)
@@ -42,29 +43,32 @@ const Register = ({navigation}) => {
           fullName: form.fullName,
           profession: form.profession,
           email: form.email,
+          uid: success.user.uid,
         };
 
         Firebase.database()
-          .ref('users' + success.user.uid + '/')
+          .ref('users/' + success.user.uid + '/')
           .set(data);
 
         storeData('user', data);
 
-        console.log('success :', success);
+        console.log('success terkirim :', success);
+        navigation.navigate('UploadPhoto', data);
       })
       .catch(error => {
         setLoading(false);
-        setForm('reset');
+        // setForm('reset');
         const errorMessage = error.message;
         showMessage({
           message: errorMessage,
           type: 'default',
           backgroundColor: colors.infoAlert,
           color: colors.white,
+          animationDuration: 500,
+          duration: 3500,
         });
         console.log('error register: ', errorMessage);
       });
-    // () => navigation.navigate('UploadPhoto');
   };
 
   return (

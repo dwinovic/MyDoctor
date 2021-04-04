@@ -2,24 +2,48 @@ import React, {useState} from 'react';
 import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import {ICBtnPhotoAdd, ICBtnPhotoRemove, ILUserPhotoNull} from '../../assets';
 import {Button, Gap, Header, Link, Profile} from '../../components';
-import {colors, fonts} from '../../utils';
+import {colors, fonts, storeData} from '../../utils';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
+import {Firebase} from '../../config';
 
-export default function UploadPhoto({navigation}) {
+export default function UploadPhoto({navigation, route}) {
+  const {fullName, profession, uid} = route.params;
+  const [photoForDB, setPhotoForDB] = useState({});
+
   const [hasPhoto, setHasPhoto] = useState(false);
   const [photo, setPhoto] = useState(ILUserPhotoNull);
 
   const getImage = () => {
-    launchImageLibrary({}, response => {
-      if (response.didCancel || response.error) {
-        setPhoto(ILUserPhotoNull);
-        setHasPhoto(false);
-      } else {
-        const source = {uri: response.uri};
-        setPhoto(source);
-        setHasPhoto(true);
-      }
-    });
+    launchImageLibrary(
+      {maxHeight: 200, maxWidth: 200, quality: 0.5},
+      response => {
+        console.log('Response ganti foto', response);
+        if (response.didCancel || response.error) {
+          setPhoto(ILUserPhotoNull);
+          setHasPhoto(false);
+        } else {
+          const source = {uri: response.uri};
+          setPhoto(source);
+          setHasPhoto(true);
+          // console.log('Response ganti foto', source);
+
+          // setPhotoForDB(`data:${response.type};base64, ${source}`);
+          setPhotoForDB({data: response.type, uri: response.uri});
+        }
+      },
+    );
+  };
+
+  const UploadAndContinue = () => {
+    Firebase.database().ref(`users/${uid}/`).update({photo: photoForDB});
+
+    const data = route.params;
+    data.photo = photoForDB;
+    // console.log(data);
+    storeData('user', data);
+
+    navigation.replace('MainApp');
+    console.log('Foto terupload');
   };
 
   return (
@@ -35,11 +59,15 @@ export default function UploadPhoto({navigation}) {
               {!hasPhoto && <ICBtnPhotoAdd style={styles.buttonCircle} />}
             </TouchableOpacity>
           </View>
-          <Text style={styles.nameUser}>Novi Dwi Cahya</Text>
-          <Text style={styles.profession}>React Native Developer</Text>
+          <Text style={styles.nameUser}>{fullName}</Text>
+          <Text style={styles.profession}>{profession}</Text>
         </View>
         <View style={styles.buttonWrapper}>
-          <Button disable={!hasPhoto} title="Upload and Continue" />
+          <Button
+            disable={!hasPhoto}
+            title="Upload and Continue"
+            onPress={UploadAndContinue}
+          />
           <Gap height={30} />
           <Link
             title="Skip for this"

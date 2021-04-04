@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import {DoctorCategory, Gap, HomeProfile, NewsItem} from '../../components';
 import DoctorRated from '../../components/molecules/DoctorRated';
-import {colors, fonts} from '../../utils';
+import {colors, fonts, getData} from '../../utils';
 import {JSONCategoryDoctor} from '../../assets';
 
 export default function Doctor({navigation}) {

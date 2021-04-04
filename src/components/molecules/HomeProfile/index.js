@@ -1,15 +1,34 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {DMUser} from '../../../assets/dummy';
-import {colors, fonts} from '../../../utils';
+import {useState} from 'react/cjs/react.development';
+import {ILUserPhotoNull} from '../../../assets';
+import {colors, fonts, getData} from '../../../utils';
 
 export default function HomeProfile({onPress}) {
+  const [user, setUser] = useState({
+    fullName: '',
+    profession: '',
+    photo: ILUserPhotoNull,
+  });
+
+  useEffect(() => {
+    getData('user').then(res => {
+      // console.log('get data local:', res);
+      // const data = res;
+      // const objectPhoto = JSON.parse(res.photo);
+
+      // console.log('objectPhoto:', objectPhoto);
+      console.log('get data local:', res);
+      setUser(res);
+    });
+  }, []);
+
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
-      <Image style={styles.avatar} source={DMUser} />
+      <Image style={styles.avatar} source={user.photo} />
       <View>
-        <Text style={styles.nameUser}>Novi Dwi Cahya</Text>
-        <Text style={styles.profession}>Expert React Developer</Text>
+        <Text style={styles.nameUser}>{user.fullName}</Text>
+        <Text style={styles.profession}>{user.profession}</Text>
       </View>
     </TouchableOpacity>
   );
@@ -32,10 +51,13 @@ const styles = StyleSheet.create({
     fontFamily: fonts.primary[400],
     fontSize: 18,
     color: colors.text.primary,
+    textTransform: 'capitalize',
   },
   profession: {
     fontFamily: fonts.primary[400],
     fontSize: 16,
+    textTransform: 'capitalize',
+
     color: colors.text.secondary,
   },
 });
