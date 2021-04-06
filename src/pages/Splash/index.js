@@ -2,12 +2,19 @@ import React, {useEffect} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {ILMyDoctor} from '../../assets';
 import {colors, fonts} from '../../utils';
+import {Firebase} from '../../config';
 
 export default function Splash({navigation}) {
   useEffect(() => {
     setTimeout(() => {
-      navigation.replace('GetStarted');
-    }, 3000);
+      Firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+          navigation.replace('MainApp');
+        } else {
+          navigation.replace('GetStarted');
+        }
+      });
+    }, 1000);
   });
 
   return (

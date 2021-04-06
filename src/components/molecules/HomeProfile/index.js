@@ -14,12 +14,13 @@ export default function HomeProfile({onPress}) {
   useEffect(() => {
     getData('user').then(res => {
       // console.log('get data local:', res);
-      // const data = res;
+      const data = res;
+      data.photo = {uri: data.photo};
       // const objectPhoto = JSON.parse(res.photo);
 
       // console.log('objectPhoto:', objectPhoto);
-      console.log('get data local:', res);
-      setUser(res);
+      setUser(data);
+      console.log('data diperbarui:', data);
     });
   }, []);
 

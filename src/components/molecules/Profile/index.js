@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {
   ICBtnPhotoAdd,
   ICBtnPhotoRemove,
@@ -8,7 +8,7 @@ import {
 } from '../../../assets';
 import {colors, fonts} from '../../../utils';
 
-const Profile = ({username, desc, editIcon, pic}) => {
+const Profile = ({username, desc, editIcon, pic, onPress}) => {
   const EditProfile = () => {
     if (editIcon === 'add') {
       return <ICBtnPhotoAdd style={styles.editIcon} />;
@@ -26,7 +26,7 @@ const Profile = ({username, desc, editIcon, pic}) => {
   };
 
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={onPress}>
       <View style={styles.avatarWrapper}>
         <Image source={pic} style={styles.avatar} />
         <EditProfile />
@@ -37,7 +37,7 @@ const Profile = ({username, desc, editIcon, pic}) => {
           <Text style={styles.profession}>{desc}</Text>
         </View>
       )}
-    </View>
+    </TouchableOpacity>
   );
 };
 
