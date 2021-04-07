@@ -1,8 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {StyleSheet, View} from 'react-native';
-import {DMUser, ILUserPhotoNull} from '../../assets';
+import {ILUserPhotoNull} from '../../assets';
 import {Gap, Header, List, Profile} from '../../components';
-import {colors, getData} from '../../utils';
+import {Firebase} from '../../config';
+import {colors, getData, showError} from '../../utils';
 
 const UserProfile = ({navigation}) => {
   const [profile, setProfile] = useState({
@@ -16,18 +17,26 @@ const UserProfile = ({navigation}) => {
 
   useEffect(() => {
     getData('user').then(response => {
-      console.log('get data 2', response);
       const dataProfile = response;
-      dataProfile.photo = {uri: dataProfile.photo};
+      dataProfile.photo = {uri: response.photo};
       setDataProfile(dataProfile);
-      // data.photo = {uri: response.photo};
       setProfile(dataProfile);
-      console.log(dataProfile);
     });
   }, []);
 
   const editProfile = () => {
     navigation.navigate('EditProfile', dataProfile);
+  };
+
+  const logout = () => {
+    Firebase.auth()
+      .signOut()
+      .then(res => {
+        navigation.replace('GetStarted');
+      })
+      .catch(err => {
+        showError(err);
+      });
   };
 
   return (
@@ -41,6 +50,7 @@ const UserProfile = ({navigation}) => {
           username={profile.fullName}
           desc={profile.profession}
           pic={profile.photo}
+          disabled
         />
       )}
       <Gap height={34} />
@@ -52,7 +62,7 @@ const UserProfile = ({navigation}) => {
       />
       <List name="Language" desc="Available 12 languages" icon="language" />
       <List name="Give Us Rate" desc="On Google Play Store" icon="rated" />
-      <List name="Help Center" desc="Read our guidelines" icon="help-center" />
+      <List name="Logout" icon="help-center" onPress={logout} />
     </View>
   );
 };

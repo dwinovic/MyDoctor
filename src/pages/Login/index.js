@@ -1,51 +1,42 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
+import {useDispatch} from 'react-redux';
 import {ILMyDoctor} from '../../assets';
-import {Button, Gap, Input, Link, Loading} from '../../components';
-import {colors, fonts, storeData, useForm} from '../../utils';
+import {Button, Gap, Input, Link} from '../../components';
 import {Firebase} from '../../config';
-import {showMessage, hideMessage} from 'react-native-flash-message';
+import {colors, fonts, showError, storeData, useForm} from '../../utils';
 
 export default function SignIn({navigation}) {
-  const [login, setLogin] = useForm({
+  const [form, setForm] = useForm({
     email: '',
     password: '',
   });
-  const [loading, setLoading] = useState(false);
-  // console.log('data login', login);
 
-  const signinData = () => {
-    console.log('sign in:', login);
+  const dispatch = useDispatch();
+  const setLoading = value => {
+    dispatch({type: 'SET_LOADING', value: value});
+  };
+
+  const signIn = () => {
     setLoading(true);
     Firebase.auth()
-      .signInWithEmailAndPassword(login.email, login.password)
+      .signInWithEmailAndPassword(form.email, form.password)
       .then(response => {
-        console.log('sukses login:', response);
         setLoading(false);
         Firebase.database()
           .ref(`users/${response.user.uid}/`)
           .once('value')
           .then(resDB => {
-            console.log('data user:', resDB.val());
             if (resDB.val()) {
               storeData('user', resDB.val());
+              navigation.replace('MainApp');
             }
           });
-        navigation.replace('MainApp');
       })
       .catch(error => {
-        const errorMessage = error;
         setLoading(false);
-        showMessage({
-          message: errorMessage,
-          type: 'default',
-          backgroundColor: colors.infoAlert,
-          color: colors.white,
-          animationDuration: 500,
-          duration: 3500,
-        });
-        console.log('error login:', error);
+        showError(error.message);
       });
   };
 
@@ -63,15 +54,15 @@ export default function SignIn({navigation}) {
               <Input
                 label="Email"
                 placeholder="youremail@gmail.com"
-                value={login.email}
-                onChangeText={value => setLogin('email', value)}
+                value={form.email}
+                onChangeText={value => setForm('email', value)}
               />
               <Gap height={24} />
               <Input
                 label="Password"
                 placeholder="your password"
-                value={login.password}
-                onChangeText={value => setLogin('password', value)}
+                value={form.password}
+                onChangeText={value => setForm('password', value)}
                 secureTextEntry
               />
               <Gap height={10} />
@@ -79,11 +70,7 @@ export default function SignIn({navigation}) {
             </View>
             <Gap height={80} />
             <View>
-              <Button
-                style={styles.button}
-                title="Sign In"
-                onPress={signinData}
-              />
+              <Button style={styles.button} title="Sign In" onPress={signIn} />
               <Gap height={30} />
               <Link
                 size={16}
@@ -95,7 +82,6 @@ export default function SignIn({navigation}) {
           </View>
         </ScrollView>
       </View>
-      {loading && <Loading />}
     </>
   );
 }

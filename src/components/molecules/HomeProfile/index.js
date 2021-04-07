@@ -1,6 +1,5 @@
-import React, {useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {useState} from 'react/cjs/react.development';
 import {ILUserPhotoNull} from '../../../assets';
 import {colors, fonts, getData} from '../../../utils';
 
@@ -13,14 +12,9 @@ export default function HomeProfile({onPress}) {
 
   useEffect(() => {
     getData('user').then(res => {
-      // console.log('get data local:', res);
       const data = res;
-      data.photo = {uri: data.photo};
-      // const objectPhoto = JSON.parse(res.photo);
-
-      // console.log('objectPhoto:', objectPhoto);
+      data.photo = {uri: res.photo};
       setUser(data);
-      console.log('data diperbarui:', data);
     });
   }, []);
 

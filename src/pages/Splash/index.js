@@ -6,15 +6,17 @@ import {Firebase} from '../../config';
 
 export default function Splash({navigation}) {
   useEffect(() => {
-    setTimeout(() => {
-      Firebase.auth().onAuthStateChanged(user => {
+    const unsubscribe = Firebase.auth().onAuthStateChanged(user => {
+      setTimeout(() => {
         if (user) {
           navigation.replace('MainApp');
         } else {
           navigation.replace('GetStarted');
         }
       });
-    }, 1000);
+    });
+
+    return () => unsubscribe();
   });
 
   return (

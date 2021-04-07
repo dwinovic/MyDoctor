@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {launchImageLibrary} from 'react-native-image-picker';
 import {ICBtnPhotoAdd, ICBtnPhotoRemove, ILUserPhotoNull} from '../../assets';
 import {Button, Gap, Header, Link, Profile} from '../../components';
-import {colors, fonts, storeData} from '../../utils';
-import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import {Firebase} from '../../config';
+import {colors, fonts, storeData} from '../../utils';
 
 export default function UploadPhoto({navigation, route}) {
   const {fullName, profession, uid} = route.params;
@@ -17,7 +17,6 @@ export default function UploadPhoto({navigation, route}) {
     launchImageLibrary(
       {maxHeight: 200, maxWidth: 200, quality: 0.5},
       response => {
-        console.log('Response ganti foto', response);
         if (response.didCancel || response.error) {
           setPhoto(ILUserPhotoNull);
           setHasPhoto(false);
@@ -25,7 +24,6 @@ export default function UploadPhoto({navigation, route}) {
           const source = {uri: response.uri};
           setPhoto(source);
           setHasPhoto(true);
-          // console.log('Response ganti foto', source);
 
           // setPhotoForDB(`data:${response.type};base64, ${source}`);
           setPhotoForDB({data: response.type, uri: response.uri});
@@ -39,11 +37,9 @@ export default function UploadPhoto({navigation, route}) {
 
     const data = route.params;
     data.photo = photoForDB;
-    // console.log(data);
     storeData('user', data);
 
     navigation.replace('MainApp');
-    console.log('Foto terupload');
   };
 
   return (

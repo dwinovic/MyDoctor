@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {
   ICBtnPhotoAdd,
@@ -8,7 +8,7 @@ import {
 } from '../../../assets';
 import {colors, fonts} from '../../../utils';
 
-const Profile = ({username, desc, editIcon, pic, onPress}) => {
+const Profile = ({username, desc, editIcon, pic, onPress, disabled}) => {
   const EditProfile = () => {
     if (editIcon === 'add') {
       return <ICBtnPhotoAdd style={styles.editIcon} />;
@@ -26,7 +26,10 @@ const Profile = ({username, desc, editIcon, pic, onPress}) => {
   };
 
   return (
-    <TouchableOpacity style={styles.container} onPress={onPress}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={onPress}
+      disabled={disabled}>
       <View style={styles.avatarWrapper}>
         <Image source={pic} style={styles.avatar} />
         <EditProfile />

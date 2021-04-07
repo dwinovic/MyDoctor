@@ -55,12 +55,10 @@ const EditProfile = ({navigation, route}) => {
     launchImageLibrary(
       {maxHeight: 200, maxWidth: 200, quality: 0.5},
       response => {
-        console.log('get Image', response);
         const image = response;
         image.photo = {uri: image.uri};
         if (image.didCancel || image.error) {
           setDataProfile('photo', ILUserPhotoNull);
-          console.log(dataProfile);
         } else {
           setDataProfile('photo', image);
         }
@@ -85,16 +83,9 @@ const EditProfile = ({navigation, route}) => {
     });
   };
 
-  // const getDataTest = () => {
-  //   getData('user').then(res => {
-  //     console.log(res);
-  //   });
-  // };
-
   const changeData = () => {
     const data = dataProfile;
     data.photo = dataProfile.photo.uri;
-    // console.log('data update', data);
     const photo = {uri: data.photo};
     setDataProfile('photo', photo);
     Firebase.database()
@@ -102,7 +93,6 @@ const EditProfile = ({navigation, route}) => {
       .update(data)
       .then(response => {
         storeData('user', data);
-        // getDataTest();
         showMessage({
           message: 'Data berhasil diperbarui',
           type: 'default',
@@ -121,7 +111,6 @@ const EditProfile = ({navigation, route}) => {
           animationDuration: 500,
           duration: 3500,
         });
-        console.log(err);
       });
   };
 

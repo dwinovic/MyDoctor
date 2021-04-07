@@ -1,18 +1,12 @@
 import React, {useState} from 'react';
 import {StyleSheet, View} from 'react-native';
+import {showMessage} from 'react-native-flash-message';
 import {ScrollView} from 'react-native-gesture-handler';
 import {Button, Gap, Header, Input, Loading} from '../../components';
 import {Firebase} from '../../config';
-import {colors, fonts, getData, storeData, useForm} from '../../utils';
-import {showMessage, hideMessage} from 'react-native-flash-message';
+import {colors, fonts, storeData, useForm} from '../../utils';
 
 const Register = ({navigation}) => {
-  //useState cara lama
-  // const [fullName, setFullName] = useState('');
-  // const [profession, setProfession] = useState('');
-  // const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('');
-
   //useState best practice
   const [form, setForm] = useForm({
     fullName: '',
@@ -24,14 +18,6 @@ const Register = ({navigation}) => {
   const [loading, setLoading] = useState(false);
 
   const onContinue = () => {
-    console.log('sedang mengirim', form);
-    // console.log(data);
-
-    // Get data from local storage
-    // getData('user').then(res => {
-    //   console.log('respon: ', res);
-    // });
-
     setLoading(true);
     Firebase.auth()
       .createUserWithEmailAndPassword(form.email, form.password)
@@ -52,12 +38,10 @@ const Register = ({navigation}) => {
 
         storeData('user', data);
 
-        console.log('success terkirim :', success);
         navigation.navigate('UploadPhoto', data);
       })
       .catch(error => {
         setLoading(false);
-        // setForm('reset');
         const errorMessage = error.message;
         showMessage({
           message: errorMessage,
