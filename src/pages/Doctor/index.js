@@ -1,11 +1,34 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import {DoctorCategory, Gap, HomeProfile, NewsItem} from '../../components';
 import DoctorRated from '../../components/molecules/DoctorRated';
-import {colors, fonts, getData} from '../../utils';
-import {JSONCategoryDoctor} from '../../assets';
+import {Firebase} from '../../config';
+import {colors, fonts} from '../../utils';
 
 export default function Doctor({navigation}) {
+  const [news, setNews] = useState([]);
+  const [categoryDoctor, setCategoryDoctor] = useState([]);
+
+  useEffect(() => {
+    Firebase.database()
+      .ref(`news/`)
+      .once('value')
+      .then(resDB => {
+        if (resDB.val()) {
+          setNews(resDB.val());
+        }
+      });
+
+    Firebase.database()
+      .ref(`category_doctor/`)
+      .once('value')
+      .then(resDB => {
+        if (resDB.val()) {
+          setCategoryDoctor(resDB.val());
+        }
+      });
+  }, []);
+
   return (
     <View style={styles.page}>
       <View style={styles.content}>
@@ -18,7 +41,7 @@ export default function Doctor({navigation}) {
           <View style={styles.categories}>
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
               <Gap width={16} />
-              {JSONCategoryDoctor.data.map(item => {
+              {categoryDoctor.map(item => {
                 return (
                   <DoctorCategory
                     key={item.id}
@@ -39,9 +62,14 @@ export default function Doctor({navigation}) {
           <DoctorRated />
           <DoctorRated />
           <Text style={styles.labelSection}>Good News</Text>
-          <NewsItem />
-          <NewsItem />
-          <NewsItem />
+          {news.map(item => (
+            <NewsItem
+              key={item.id}
+              title={item.title}
+              image={item.image}
+              date={item.date}
+            />
+          ))}
           <Gap height={16} />
         </ScrollView>
       </View>
