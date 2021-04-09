@@ -3,7 +3,11 @@ import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {ILUserPhotoNull} from '../../../assets';
 import {colors, fonts, getData} from '../../../utils';
 
-export default function HomeProfile({onPress}) {
+export default function HomeProfile({onPress, route}) {
+  // const {fullName, email, photo, profession, uid} = route.params;
+  // const data = route.params;
+  // console.log(data);
+
   const [user, setUser] = useState({
     fullName: '',
     profession: '',

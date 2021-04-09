@@ -1,26 +1,57 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {StyleSheet, View} from 'react-native';
-import {DMDoctor6} from '../../assets';
 import {Header, List} from '../../components';
+import {Firebase} from '../../config';
 
-export default function ChooseDoctor({navigation}) {
+export default function ChooseDoctor({navigation, route}) {
+  const doctorCategory = route.params;
+  const [dataDoctor, setDataDoctor] = useState([]);
+
+  useEffect(() => {
+    callDoctorByCategory(doctorCategory.category);
+  }, [doctorCategory.category]);
+
+  const callDoctorByCategory = category => {
+    Firebase.database()
+      .ref('doctors/')
+      .orderByChild('category')
+      .equalTo(category)
+      .once('value')
+      .then(res => {
+        if (res.val()) {
+          const oldValue = res.val();
+          const data = [];
+          Object.keys(oldValue).map(item =>
+            data.push({
+              id: item,
+              data: oldValue[item],
+            }),
+          );
+          setDataDoctor(data);
+        }
+      });
+  };
+
   return (
     <View style={styles.page}>
       <Header
-        title="Pilih Dokter Anak"
+        title={`Pilih ${doctorCategory.category}`}
         type="dark"
         onPress={() => navigation.goBack()}
       />
       <View style={styles.wrapperDoctor}>
-        <List
-          name="Siti"
-          profile={DMDoctor6}
-          desc="Wanita"
-          type="next"
-          onPress={() => navigation.navigate('Chatting')}
-        />
-        <List name="Siti" profile={DMDoctor6} desc="Wanita" type="next" />
-        <List name="Siti" profile={DMDoctor6} desc="Wanita" type="next" />
+        {dataDoctor.map(doctor => {
+          return (
+            <List
+              key={doctor.id}
+              name={doctor.data.fullName}
+              profile={{uri: doctor.data.photo}}
+              desc={doctor.data.gender}
+              type="next"
+              onPress={() => navigation.navigate('DoctorProfile', doctor.data)}
+            />
+          );
+        })}
       </View>
     </View>
   );

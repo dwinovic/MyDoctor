@@ -43,11 +43,11 @@ const EditProfile = ({navigation, route}) => {
       } else {
         changePassword();
         changeData();
-        navigation.replace('MainApp');
+        navigation.replace('UserProfile');
       }
     } else {
       changeData();
-      navigation.replace('MainApp');
+      navigation.replace('UserProfile');
     }
   };
 
@@ -58,7 +58,7 @@ const EditProfile = ({navigation, route}) => {
         const image = response;
         image.photo = {uri: image.uri};
         if (image.didCancel || image.error) {
-          setDataProfile('photo', ILUserPhotoNull);
+          // setDataProfile('photo', ILUserPhotoNull);
         } else {
           setDataProfile('photo', image);
         }

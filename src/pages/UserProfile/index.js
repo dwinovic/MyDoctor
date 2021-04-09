@@ -42,7 +42,10 @@ const UserProfile = ({navigation}) => {
   return (
     <View style={styles.page}>
       <View style={styles.header}>
-        <Header title="Profile" onPress={() => navigation.goBack()} />
+        <Header
+          title="Profile"
+          onPress={() => navigation.navigate('MainApp')}
+        />
       </View>
       <Gap height={10} />
       {profile.fullName.length > 0 && (

@@ -16,10 +16,10 @@ const Profile = ({username, desc, editIcon, pic, onPress, disabled}) => {
     if (editIcon === 'remove') {
       return <ICBtnPhotoRemove style={styles.editIcon} />;
     }
-    if (editIcon === 'female') {
+    if (editIcon === 'wanita') {
       return <ICFemale style={styles.editIcon} />;
     }
-    if (editIcon === 'male') {
+    if (editIcon === 'pria') {
       return <ICMale style={styles.editIcon} />;
     }
     return null;

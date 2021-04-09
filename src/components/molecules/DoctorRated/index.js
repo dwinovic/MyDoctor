@@ -4,13 +4,13 @@ import {ICrateStarFilled, ICrateStartUnfilled} from '../../../assets';
 import {DMDoctor1} from '../../../assets/dummy';
 import {colors, fonts} from '../../../utils';
 
-export default function DoctorRated({onPress}) {
+export default function DoctorRated({onPress, image, name, category}) {
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
-      <Image source={DMDoctor1} style={styles.avatar} />
+      <Image source={{uri: image}} style={styles.avatar} />
       <View style={styles.doctor}>
-        <Text style={styles.doctorName}>dr. Shiva Alamsyah</Text>
-        <Text style={styles.doctorType}>Dokter Anak</Text>
+        <Text style={styles.doctorName}>{name}</Text>
+        <Text style={styles.doctorType}>{category}</Text>
       </View>
       <View style={styles.rated}>
         <ICrateStarFilled />
