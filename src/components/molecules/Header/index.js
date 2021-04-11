@@ -4,7 +4,7 @@ import {colors, fonts} from '../../../utils';
 import {Button, Gap} from '../../atoms';
 import HeaderProfile from './HeaderProfile';
 
-export default function Header({onPress, title, type, subtitle}) {
+export default function Header({onPress, title, type, subtitle, image}) {
   if (type === 'dark-profile') {
     return (
       <HeaderProfile
@@ -12,6 +12,7 @@ export default function Header({onPress, title, type, subtitle}) {
         type={type}
         title={title}
         subtitle={subtitle}
+        image={image}
       />
     );
   }

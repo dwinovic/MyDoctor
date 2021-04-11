@@ -4,12 +4,12 @@ import {colors, fonts} from '../../../utils';
 import BtnIconSend from './BtnIconSend';
 import IconOnly from './IconOnly';
 
-const Button = ({type, title, onPress, icon, disable}) => {
+const Button = ({type, title, onPress, icon, disable, value}) => {
   if (type === 'icon-only') {
     return <IconOnly icon={icon} onPress={onPress} />;
   }
   if (type === 'icon-send') {
-    return <BtnIconSend icon={icon} onPress={onPress} />;
+    return <BtnIconSend icon={icon} onPress={onPress} disable={disable} />;
   }
 
   if (disable) {

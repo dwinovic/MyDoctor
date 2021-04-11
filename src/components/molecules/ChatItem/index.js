@@ -1,23 +1,20 @@
 import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
-import {DMDoctor3} from '../../../assets';
 import {colors, fonts} from '../../../utils';
 import IsMe from './IsMe';
 
-const ChatItem = ({isMe}) => {
+const ChatItem = ({isMe, text, time, image}) => {
   if (isMe) {
-    return <IsMe />;
+    return <IsMe text={text} time={time} />;
   }
   return (
     <View style={styles.container}>
-      <Image style={styles.avatar} source={DMDoctor3} />
+      <Image style={styles.avatar} source={{uri: image}} />
       <View>
         <View style={styles.chatWrapper}>
-          <Text style={styles.desc}>
-            Ibu Dokter, apakah kurang tidur buruk bagi kesehatan ?
-          </Text>
+          <Text style={styles.desc}>{text}</Text>
         </View>
-        <Text style={styles.time}>4.20 PM</Text>
+        <Text style={styles.time}>{time}</Text>
       </View>
     </View>
   );

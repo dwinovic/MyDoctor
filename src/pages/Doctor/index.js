@@ -89,19 +89,15 @@ export default function Doctor({navigation}) {
             </ScrollView>
           </View>
           <Text style={styles.labelSection}>Dokter Pilihan</Text>
-          {ratedDoctor.map(doctor => {
-            return (
-              <DoctorRated
-                key={doctor.id}
-                name={doctor.data.fullName}
-                image={doctor.data.photo}
-                category={doctor.data.category}
-                onPress={() =>
-                  navigation.navigate('DoctorProfile', doctor.data)
-                }
-              />
-            );
-          })}
+          {ratedDoctor.map(doctor => (
+            <DoctorRated
+              key={doctor.id}
+              name={doctor.data.fullName}
+              image={doctor.data.photo}
+              category={doctor.data.category}
+              onPress={() => navigation.navigate('DoctorProfile', doctor.data)}
+            />
+          ))}
           <Text style={styles.labelSection}>Good News</Text>
           {news.map(item => (
             <NewsItem

@@ -31,7 +31,7 @@ const DoctorProfile = ({navigation, route}) => {
         <View>
           <Button
             title="Start Consultation"
-            onPress={() => navigation.navigate('Chatting')}
+            onPress={() => navigation.navigate('Chatting', dataDoctor)}
           />
           <Gap height={40} />
         </View>

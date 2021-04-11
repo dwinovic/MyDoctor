@@ -4,7 +4,7 @@ import {DMDoctor3} from '../../../assets';
 import {colors, fonts} from '../../../utils';
 import {Button} from '../../atoms';
 
-const HeaderProfile = ({onPress, title, subtitle, type}) => {
+const HeaderProfile = ({onPress, title, subtitle, type, image}) => {
   return (
     <View style={styles.container(type)}>
       <Button
@@ -16,7 +16,7 @@ const HeaderProfile = ({onPress, title, subtitle, type}) => {
         <Text style={styles.title(type)}>{title}</Text>
         <Text style={styles.subtitle(type)}>{subtitle}</Text>
       </View>
-      <Image source={DMDoctor3} style={styles.avatar} />
+      <Image source={image} style={styles.avatar} />
     </View>
   );
 };
@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
       type === 'dark-profile' ? colors.text.secondary : colors.text.primary,
     fontFamily: fonts.primary[400],
     fontSize: 14,
+    textTransform: 'capitalize',
   }),
   wrapperTitle: {
     flex: 1,
