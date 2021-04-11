@@ -14,7 +14,6 @@ const Register = ({navigation}) => {
     email: '',
     password: '',
   });
-
   const [loading, setLoading] = useState(false);
 
   const onContinue = () => {
