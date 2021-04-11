@@ -111,7 +111,7 @@ const Chatting = ({navigation, route}) => {
         <View style={styles.content}>
           {chatData.map(chat => {
             return (
-              <View>
+              <View key={chat.id}>
                 <Text style={styles.date}>{chat.id}</Text>
                 {chat.data.map(chatItem => {
                   const isMe = chatItem.data.sendBy === user.uid;
@@ -121,6 +121,7 @@ const Chatting = ({navigation, route}) => {
                       text={chatItem.data.chatContent}
                       time={chatItem.data.chatTime}
                       image={isMe ? null : dataDoctor.photo}
+                      key={chatItem.id}
                     />
                   );
                 })}
