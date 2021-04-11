@@ -2,12 +2,25 @@ import React, {useState} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {showMessage} from 'react-native-flash-message';
 import {ScrollView} from 'react-native-gesture-handler';
+<<<<<<< HEAD
 import {Button, Gap, Header, Input, Loading} from '../../components';
 import {Firebase} from '../../config';
 import {colors, fonts, storeData, useForm} from '../../utils';
 
 const Register = ({navigation}) => {
   //useState best practice
+=======
+import {Button, Gap, Header, Input} from '../../components';
+import {colors, fonts, useForm} from '../../utils';
+// import {Fire} from '../../config';
+
+const Register = ({navigation}) => {
+  // const [fullName, setFullName] = useState('');
+  // const [profession, setProfession] = useState('');
+  // const [email, setEmail] = useState('');
+  // const [password, setPassword] = useState('');
+
+>>>>>>> main
   const [form, setForm] = useForm({
     fullName: '',
     profession: '',
@@ -15,6 +28,7 @@ const Register = ({navigation}) => {
     password: '',
   });
 
+<<<<<<< HEAD
   const [loading, setLoading] = useState(false);
 
   const onContinue = () => {
@@ -53,6 +67,27 @@ const Register = ({navigation}) => {
         });
         console.log('error register: ', errorMessage);
       });
+=======
+  const onContinue = () => {
+    console.log(form);
+
+    // Fire.auth()
+    //   .createUserWithEmailAndPassword(form.email, form.password)
+    //   .then(userCredential => {
+    //     // Signed in
+    //     const user = userCredential.user;
+    //     console.log('Success', user);
+    //     // ...
+    //   })
+    //   .catch(error => {
+    //     const errorCode = error.code;
+    //     const errorMessage = error.message;
+    //     console.log('error register', errorMessage);
+    //     // ..
+    //   });
+
+    // () => navigation.navigate('UploadPhoto')
+>>>>>>> main
   };
 
   return (
