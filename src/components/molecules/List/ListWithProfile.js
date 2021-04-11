@@ -77,6 +77,7 @@ const styles = StyleSheet.create({
   desc: {
     fontFamily: fonts.primary[400],
     fontSize: 14,
+    textTransform: 'capitalize',
   },
   wrappMessage: {
     flex: 1,

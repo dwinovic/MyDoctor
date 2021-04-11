@@ -86,12 +86,31 @@ const Chatting = ({navigation, route}) => {
     };
 
     const firebaseUrl = `chatting/${chatId}/allchat/${day} ${month} ${year}`;
+    const urlMessageUser = `message/${user.uid}/${chatId}`;
+    const urlMessageDoctor = `message/${dataDoctor.uid}/${chatId}`;
+
+    const historyChatForDoctor = {
+      lastChatContent: chatContent,
+      lastChatDate: getDateChat(date),
+      uidPartner: user.uid,
+    };
+
+    const historyChatForUser = {
+      lastChatContent: chatContent,
+      lastChatDate: getDateChat(date),
+      uidPartner: dataDoctor.uid,
+    };
 
     Firebase.database()
       .ref(firebaseUrl)
       .push(data)
       .then(res => {
         setChatContent('');
+
+        //set history user
+        Firebase.database().ref(urlMessageUser).set(historyChatForUser);
+        //Set history doctor
+        Firebase.database().ref(urlMessageDoctor).set(historyChatForDoctor);
       })
       .catch(err => {
         showError(err.message);
