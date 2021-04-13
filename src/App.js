@@ -5,11 +5,11 @@ import FlashMessage from 'react-native-flash-message';
 import {Provider, useSelector} from 'react-redux';
 import {store} from './redux';
 import {Loading} from './components';
-import {YellowBox} from 'react-native';
+import {LogBox} from 'react-native';
 
 const MainApp = () => {
   const stateGlobal = useSelector(state => state);
-  YellowBox.ignoreWarnings(['Setting a timer']);
+  LogBox.ignoreLogs(['Setting a timer']);
 
   return (
     <>
